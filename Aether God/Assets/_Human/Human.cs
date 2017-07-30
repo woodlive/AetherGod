@@ -14,6 +14,15 @@ public class Human : MonoBehaviour
 
    public Formation formation { get; set; }
 
+   [SerializeField] float maxHealth = 100f;
+
+   private float currentHealthPoints = 100f;
+
+   public float healthAsPercentage
+   {
+      get { return currentHealthPoints / maxHealth; }
+   }
+
    void Start()
    {
       thirdPersonCharacter = GetComponent<ThirdPersonCharacter>();
@@ -79,8 +88,8 @@ public void AttackHuman(Human target){
    {
       if (wayPoint != null)
       {
+         Gizmos.color = Color.red;
          Gizmos.DrawLine(transform.position, wayPoint.gameObject.transform.position);
-
       }
    }
 }
